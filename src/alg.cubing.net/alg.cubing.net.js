@@ -671,7 +671,7 @@ algxControllers.controller("algxController", [
         return;
       }
       $(document).bind("selectionchange", function (event) {
-        if (!$scope.algDelayed) {
+        if (!$scope.algDelayed && document.activeElement.id === 'algorithm') {
           followSelection(true);
         }
       });
