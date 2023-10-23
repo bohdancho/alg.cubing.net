@@ -25,6 +25,23 @@ angular.element(document).ready(() => {
       });
     }
 
+    function setup() {
+      const scrambleTitleElement = document.querySelector(
+        '[data-ng-bind="type.setup"]',
+      );
+      const solveTitleElement = document.querySelector(
+        '[data-ng-bind="type.alg"]',
+      );
+      const speedTitleElement = document.querySelector(
+        '[data-ng-show="view.extraControls"] .section + div > h2',
+      );
+
+      scrambleTitleElement.innerHTML = "scramble";
+      solveTitleElement.innerHTML = "solve";
+      speedTitleElement.innerHTML = "speed";
+    }
+
+    setup();
     return { importReconstruction };
   })();
 
