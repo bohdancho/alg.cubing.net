@@ -18,6 +18,7 @@
 
 #setup:hover,
 #setup:focus,
+#algorithm,
 #algorithm:hover,
 #algorithm:focus {
   border: none;
@@ -54,8 +55,13 @@ textarea {
   border-top: none;
 }
 
+#info {
+  padding-right: 32px;
+}
+
 #controls {
   margin-top: 15px;
+  width: auto;
 }
 
 #controls .control {
@@ -69,4 +75,34 @@ textarea {
 
 #controls .control:not(:nth-child(-2)) {
   margin-right: 12px;
+}
+
+.vs-controls-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.vs-title {
+  font-weight: normal;
+  margin-top: 20px;
+  margin-bottom: 3px;
+  display: block;
+}
+
+.vs-speed-range-wrapper {
+  display: grid;
+  grid-template-columns: 1fr min-content;
+  column-gap: 16px;
+  align-items: center;
+  background: #18232c;
+  border-radius: 5px;
+  padding: 15px 20px;
+}
+
+.vs-speed-section {
+  padding: 0;
+}
+
+.vs-speed-range {
+  accent-color: #3a4b58;
 }
