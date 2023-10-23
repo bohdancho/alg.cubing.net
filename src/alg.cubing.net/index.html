@@ -89,7 +89,7 @@
       </h1>
 
       <div data-ng-show="!(view.id == 'playback' && setup == '')">
-        <h2 data-ng-bind="type.setup">Setup</h2>
+        <h2 data-ng-bind="type.setup">scramble</h2>
         <textarea
           id="setup"
           class="moves"
@@ -107,7 +107,7 @@
       </div>
 
       <div>
-        <h2><span data-ng-bind="type.alg">Algorithm</span><span title="h = obtm, q = obqtm, s = btm, e = etm" id="metrics">
+        <h2><span data-ng-bind="type.alg">solve</span><span title="h = obtm, q = obqtm, s = btm, e = etm" id="metrics">
                 (<span data-ng-bind="obtm">0</span>h,
                 <span data-ng-bind="obqtm">0</span>q,
                 <span data-ng-bind="btm">0</span>s,
@@ -170,9 +170,9 @@
           </div>
 
           <div>
-            <h2>Playback Options</h2>
+            <h2>speed</h2>
             <div class="section">
-              Speed: <input type="range" min="0.1" max="6" step="0.1" style="vertical-align: middle;" data-ng-model="speed"> (<span data-ng-bind="speed">1</span>x)<br>
+              <input type="range" min="0.1" max="6" step="0.1" style="vertical-align: middle;" data-ng-model="speed"> (<span data-ng-bind="speed">1</span>x)<br>
               <input id="hint_stickers" type="checkbox" data-ng-model="hint_stickers" /> <label for="hint_stickers">Hint Stickers</label>
               <input id="hollow" type="checkbox" data-ng-model="hollow" /> <label for="hollow">Hollow</label>
             </div>
