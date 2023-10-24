@@ -287,7 +287,7 @@ algxControllers.controller("algxController", [
       var img = canvas.toDataURL("image/png");
       $("#canvasPNG").fadeTo(0, 0);
       $("#canvasPNG").html(
-        '<a href="' + img + '" target="blank"><img src="' + img + '"/></a>'
+        '<a href="' + img + '" target="blank"><img src="' + img + '"/></a>',
       );
       $("#canvasPNG").fadeTo("slow", 1);
     };
@@ -368,11 +368,16 @@ algxControllers.controller("algxController", [
         '[URL="' + $scope.share_url + '"]' + $scope.alg + "[/URL]";
       $scope.share_forum_long = forumLinkText($scope.share_url);
       $scope.goToTwizzle = async () => {
-        const cubingAlg = await globalThis.algPromise
+        const cubingAlg = await globalThis.algPromise;
         const { TwistyPlayer } = await globalThis.twistyPromise;
 
-        const theAlg = alg.cube.toCubingJSAlg(alg.cube.fromString($scope.alg), { alg: cubingAlg });
-        const theSetup = alg.cube.toCubingJSAlg(alg.cube.fromString($scope.setup), { alg: cubingAlg });
+        const theAlg = alg.cube.toCubingJSAlg(alg.cube.fromString($scope.alg), {
+          alg: cubingAlg,
+        });
+        const theSetup = alg.cube.toCubingJSAlg(
+          alg.cube.fromString($scope.setup),
+          { alg: cubingAlg },
+        );
 
         const config = {
           alg: theAlg,
@@ -380,12 +385,16 @@ algxControllers.controller("algxController", [
           puzzle: $scope.puzzle.id,
           experimentalStickering: $scope.stage.id,
         };
-        if (["algorithm", "reconstruction-end-with-setup"].includes($scope.type.id)) {
+        if (
+          ["algorithm", "reconstruction-end-with-setup"].includes(
+            $scope.type.id,
+          )
+        ) {
           config.experimentalSetupAnchor = "end";
         }
         const player = new TwistyPlayer(config);
         if ($scope.title) {
-          player.experimentalTitle = $scope.title
+          player.experimentalTitle = $scope.title;
         }
 
         const url = await player.experimentalModel.twizzleLink();
@@ -394,7 +403,7 @@ algxControllers.controller("algxController", [
         const a = document.createElement("a");
         a.href = url;
         a.click();
-      }
+      };
     };
 
     var colorMap = {
@@ -548,12 +557,12 @@ algxControllers.controller("algxController", [
         var newStart = locationToIndex(
           $scope.alg,
           current_move.location.first_line,
-          current_move.location.first_column
+          current_move.location.first_column,
         );
         var newEnd = locationToIndex(
           $scope.alg,
           current_move.location.last_line,
-          current_move.location.last_column
+          current_move.location.last_column,
         );
 
         if (newStart == previousStart && newEnd == previousEnd) {
@@ -647,7 +656,7 @@ algxControllers.controller("algxController", [
           var loc = locationToIndex(
             $scope.alg,
             move.location.first_line,
-            move.location.first_column
+            move.location.first_column,
           );
           if (loc == selectionStart && loc !== 0) {
             // Show the beginning of the current move if our cursor is... at the beginning.
@@ -671,7 +680,7 @@ algxControllers.controller("algxController", [
         return;
       }
       $(document).bind("selectionchange", function (event) {
-        if (!$scope.algDelayed && document.activeElement.id === 'algorithm') {
+        if (!$scope.algDelayed && document.activeElement.id === "algorithm") {
           followSelection(true);
         }
       });
@@ -687,8 +696,8 @@ algxControllers.controller("algxController", [
         $("#currentMove").css({
           background:
             "linear-gradient(to right, \
-        #cc181e 0%, \
-        #cc181e " +
+        #3A4B58 0%, \
+        #3A4B58 " +
             ($scope.current_move / $("#currentMove").attr("max")) * 100 +
             "%, \
         #AAA " +
@@ -784,9 +793,9 @@ algxControllers.controller("algxController", [
           },
           function () {
             displayErrorToast(
-              "ERROR: Could not copy the forum link.<br>(Your browser might not support web clipboard API yet.)"
+              "ERROR: Could not copy the forum link.<br>(Your browser might not support web clipboard API yet.)",
             );
-          }
+          },
         );
     });
     $("#copyLong").on("click", function (event) {
@@ -800,9 +809,9 @@ algxControllers.controller("algxController", [
           },
           function () {
             displayErrorToast(
-              "ERROR: Could not copy the forum link.<br>(Your browser might not support web clipboard API yet.)"
+              "ERROR: Could not copy the forum link.<br>(Your browser might not support web clipboard API yet.)",
             );
-          }
+          },
         );
     });
 
@@ -813,32 +822,28 @@ algxControllers.controller("algxController", [
         type: $scope.type_map["reconstruction"],
         title: "Yusheng Du, 3.47 WR",
         setup: "F U2 L2 B2 F' U L2 U R2 D2 L' B L2 B' R2 U2",
-        alg:
-          "y x' // inspection\nU R2 U' F' L F' U' L' // XX-Cross + EO\nU' R U R' // 3rd slot\nR' U R U2' R' U R // 4th slot\nU R' U' R U' R' U2 R // OLL / ZBLL\nU // AUF\n\n// from http://cubesolv.es/solve/5757",
+        alg: "y x' // inspection\nU R2 U' F' L F' U' L' // XX-Cross + EO\nU' R U R' // 3rd slot\nR' U R U2' R' U R // 4th slot\nU R' U' R U' R' U2 R // OLL / ZBLL\nU // AUF\n\n// from http://cubesolv.es/solve/5757",
       },
       "feliks-4.22": {
         puzzle: $scope.puzzle_map["3x3x3"],
         type: $scope.type_map["reconstruction"],
         title: "Feliks Zemdegs, 4.22 WR",
         setup: "R2 L' F2 D2 F' D L2 B' D L U B2 U B2 D2 L2 D' F2 D",
-        alg:
-          "F' R' D' R // pseudo cross \ny R U' R' u' // Xcross \nU' R U R' // 2nd pair \ny' L' U2 L U' L' U L // 3rd pair \nd (U R' U' R)2 // 4th pair \nU' R U2' R' R' F R F' R U2' R' // OLL(CP) ",
+        alg: "F' R' D' R // pseudo cross \ny R U' R' u' // Xcross \nU' R U R' // 2nd pair \ny' L' U2 L U' L' U L // 3rd pair \nd (U R' U' R)2 // 4th pair \nU' R U2' R' R' F R F' R U2' R' // OLL(CP) ",
       },
       "mats-4.74": {
         puzzle: $scope.puzzle_map["3x3x3"],
         type: $scope.type_map["reconstruction"],
         title: "Mats Valk, 4.74 WR",
         setup: "B2 F2 D F2 L2 U R2 B2 F2 U2 L2 B' L2 R2 D' U2 L2 U' R' F R",
-        alg:
-          "x' y' // Inspection\nL' D R2 // Cross\nR U' R' U' L' U' L // 1st Pair\nU2 R U R' U' d' R U R' // 2nd Pair\ny U2 R U' R' L U' L' // 3rd Pair\ny' U2 R' U2 R U2 // 4th Pair\nR' U R' F R F' U R // VLS\nU // AUF",
+        alg: "x' y' // Inspection\nL' D R2 // Cross\nR U' R' U' L' U' L // 1st Pair\nU2 R U R' U' d' R U R' // 2nd Pair\ny U2 R U' R' L U' L' // 3rd Pair\ny' U2 R' U2 R U2 // 4th Pair\nR' U R' F R F' U R // VLS\nU // AUF",
       },
       "seungbeom-4.59": {
         puzzle: $scope.puzzle_map["3x3x3"],
         type: $scope.type_map["reconstruction"],
         title: "SeungBeom Cho, 4.59 WR",
         setup: "U2 L' D2 L D2 R F2 D2 R' D2 U2 B U L U L' R D L2 F2 U2 R'",
-        alg:
-          "x2 // inspection\nD' R' L2' U' F U' F' (D' U') U' R' // xxcross\ny' R' U' R // 3rd pair\ny' R U' R' U' R U R' // 4th pair\nU' R' U' F' U F R // OLL(CP)\nU' // AUF\n\n// Video: youtu.be/5x8jgGX3iNM",
+        alg: "x2 // inspection\nD' R' L2' U' F U' F' (D' U') U' R' // xxcross\ny' R' U' R // 3rd pair\ny' R U' R' U' R U R' // 4th pair\nU' R' U' F' U F R // OLL(CP)\nU' // AUF\n\n// Video: youtu.be/5x8jgGX3iNM",
       },
       "T-Perm": {
         type: $scope.type_map["alg"],
@@ -857,8 +862,7 @@ algxControllers.controller("algxController", [
         type: $scope.type_map["moves"],
         title: "Notation Demo",
         setup: "M2 U M2 U2 M2 U M2",
-        alg:
-          "R L U D B F // Single moves, variable spacing.\nB' F' D' U' L' R' // Inverses.\nR L2 R3 L2' R5 L8' R7 // Move amount\nU . U . U ... U // Pauses.\nM' E2 S2 M S2 E2 m2 e2 s2 m2 e2 s2 // Slice turns.\nM2' U' M2' U2' M2' U' M2' // H'perm.\nx y z // Rotations.\nR2 L2 R2' L2' // Half turns.\nRw r' Lw l' Uw u' Dw d' Bw b' Fw f' // Wide turns.\n4Rw x L' // Very wide turns\n2-3Lw 3-4r // Wide block turns\n[[R: U], D2] // commutator/conjugate/nesting\n([R: U'] D2)2' [R: U2] // Grouping and repetition",
+        alg: "R L U D B F // Single moves, variable spacing.\nB' F' D' U' L' R' // Inverses.\nR L2 R3 L2' R5 L8' R7 // Move amount\nU . U . U ... U // Pauses.\nM' E2 S2 M S2 E2 m2 e2 s2 m2 e2 s2 // Slice turns.\nM2' U' M2' U2' M2' U' M2' // H'perm.\nx y z // Rotations.\nR2 L2 R2' L2' // Half turns.\nRw r' Lw l' Uw u' Dw d' Bw b' Fw f' // Wide turns.\n4Rw x L' // Very wide turns\n2-3Lw 3-4r // Wide block turns\n[[R: U], D2] // commutator/conjugate/nesting\n([R: U'] D2)2' [R: U2] // Grouping and repetition",
       },
     };
 

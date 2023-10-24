@@ -12,7 +12,8 @@
 }
 
 #setup,
-#algorithm {
+#algorithm,
+.vs-algorithm-container {
   background: #18232c;
 }
 
@@ -22,6 +23,21 @@
 #algorithm:hover,
 #algorithm:focus {
   border: none;
+}
+
+.vs-algorithm-container {
+  padding: 11px 7px 11px 0;
+  border-radius: 5px;
+}
+
+#algorithm_wrapper {
+  max-height: 221px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#algorithm_wrapper > .moves {
+  padding-top: 3px;
 }
 
 .moves {
@@ -73,8 +89,18 @@ textarea {
   text-align: center;
 }
 
-#controls .control:not(:nth-child(-2)) {
+#controls .control:not(:nth-child(6)) {
   margin-right: 12px;
+}
+
+#progress {
+  width: 460px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#progress input {
+  border-radius: 6px;
 }
 
 .vs-controls-wrapper {
@@ -84,7 +110,7 @@ textarea {
 
 .vs-title {
   font-weight: normal;
-  margin-top: 20px;
+  margin-top: 12px;
   margin-bottom: 3px;
   display: block;
 }
@@ -105,4 +131,27 @@ textarea {
 
 .vs-speed-range {
   accent-color: #3a4b58;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: none;
+  scrollbar-color: #444b50 #787e82;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #787e82;
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #444b50;
+  border-radius: 6px;
+  border: 0px none #ffffff;
 }
