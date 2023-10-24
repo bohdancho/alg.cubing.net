@@ -45,5 +45,15 @@ angular.element(document).ready(() => {
     return { importReconstruction };
   })();
 
-  window.api = api;
+  window.addEventListener(
+    "message",
+    (event) => {
+      if (event.data.source !== "vs-integration") {
+        return;
+      }
+      const { scramble, reconstruction } = event.data.solve;
+      api.importReconstruction(scramble, reconstruction);
+    },
+    false,
+  );
 });
