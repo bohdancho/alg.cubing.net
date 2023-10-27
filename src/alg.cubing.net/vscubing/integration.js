@@ -9,7 +9,7 @@ angular.element(document).ready(() => {
       document.querySelector("#algorithm").setSelectionRange(0, 0),
     );
 
-    function importReconstruction(scramble, reconstruction) {
+    function importReconstruction(scramble, reconstruction, link) {
       const props = {
         puzzle: $scope.puzzle_map["3x3x3"],
         type: $scope.type_map["reconstruction"],
@@ -23,6 +23,9 @@ angular.element(document).ready(() => {
           $scope[i] = props[i];
         }
       });
+
+      const linkButton = document.querySelector(".vs-copy-link-btn");
+      linkButton.dataset.link = link;
     }
 
     function setup() {
@@ -39,6 +42,19 @@ angular.element(document).ready(() => {
       scrambleTitleElement.innerHTML = "scramble";
       solveTitleElement.innerHTML = "solve";
       speedTitleElement.innerHTML = "speed";
+
+      const copyLinkBtn = document.createElement("button");
+      copyLinkBtn.innerHTML = "Copy link";
+      copyLinkBtn.classList = "vs-copy-link-btn";
+      copyLinkBtn.addEventListener("click", (e) => {
+        const link = e.target.dataset.link;
+        navigator.clipboard.writeText(link).then(
+          () => alert("link copied"),
+          () => alert("unexpected error happened while copying the link"),
+        );
+      });
+
+      document.querySelector("#info").appendChild(copyLinkBtn);
     }
 
     setup();
@@ -51,8 +67,8 @@ angular.element(document).ready(() => {
       if (event.data.source !== "vs-integration") {
         return;
       }
-      const { scramble, reconstruction } = event.data.solve;
-      api.importReconstruction(scramble, reconstruction);
+      const { scramble, reconstruction, link } = event.data.reconstruction;
+      api.importReconstruction(scramble, reconstruction, link);
     },
     false,
   );

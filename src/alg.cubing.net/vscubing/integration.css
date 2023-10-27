@@ -31,7 +31,7 @@
 }
 
 #algorithm_wrapper {
-  max-height: 221px;
+  max-height: 150px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -131,6 +131,16 @@ textarea {
 
 .vs-speed-range {
   accent-color: #3a4b58;
+}
+
+#info .vs-copy-link-btn,
+#info .vs-copy-link-btn:hover,
+#info .vs-copy-link-btn:active {
+  width: auto;
+  background: #2c363e;
+  color: #cfd1d2;
+  border-radius: 5px;
+  padding: 10px 20px;
 }
 
 /* ===== Scrollbar CSS ===== */
