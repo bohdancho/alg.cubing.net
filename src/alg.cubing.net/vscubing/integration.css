@@ -31,7 +31,7 @@
 }
 
 #algorithm_wrapper {
-  max-height: 150px;
+  max-height: 140px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
