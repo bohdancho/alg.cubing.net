@@ -9,13 +9,14 @@ angular.element(document).ready(() => {
       document.querySelector("#algorithm").setSelectionRange(0, 0),
     );
 
+    // reconstruction: {scramble: string, solution: string}
     function importReconstruction(reconstruction, link) {
       const props = {
         puzzle: $scope.puzzle_map["3x3x3"],
         type: $scope.type_map["reconstruction"],
         title: "Solve by Bohdan Chornokondratenko",
         setup: reconstruction.scramble,
-        alg: reconstruction.reconstruction,
+        alg: reconstruction.solution,
       };
       $scope.$apply(() => {
         $scope.reset();
