@@ -9,13 +9,13 @@ angular.element(document).ready(() => {
       document.querySelector("#algorithm").setSelectionRange(0, 0),
     );
 
-    function importReconstruction(scramble, reconstruction, link) {
+    function importReconstruction(reconstruction, link) {
       const props = {
         puzzle: $scope.puzzle_map["3x3x3"],
         type: $scope.type_map["reconstruction"],
         title: "Solve by Bohdan Chornokondratenko",
-        setup: scramble,
-        alg: reconstruction,
+        setup: reconstruction.scramble,
+        alg: reconstruction.reconstruction,
       };
       $scope.$apply(() => {
         $scope.reset();
@@ -67,8 +67,8 @@ angular.element(document).ready(() => {
       if (event.data.source !== "vs-integration") {
         return;
       }
-      const { scramble, reconstruction, link } = event.data.reconstruction;
-      api.importReconstruction(scramble, reconstruction, link);
+      const { reconstruction, link } = event.data.payload;
+      api.importReconstruction(reconstruction, link);
     },
     false,
   );
