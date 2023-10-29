@@ -475,6 +475,7 @@ algxControllers.controller("algxController", [
         renderer: Renderer,
         cachedRenderer: true,
       });
+      window._twistyScene = twistyScene;
       $("#viewer").append($(twistyScene.getDomElement()));
 
       twistyScene.initializePuzzle({

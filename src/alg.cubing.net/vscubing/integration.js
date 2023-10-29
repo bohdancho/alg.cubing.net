@@ -18,6 +18,7 @@ angular.element(document).ready(() => {
         setup: reconstruction.scramble,
         alg: reconstruction.solution,
       };
+      window._twistyScene.play.reset();
       $scope.$apply(() => {
         $scope.reset();
         for (i in props) {
