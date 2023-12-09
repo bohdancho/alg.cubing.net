@@ -178,3 +178,40 @@ textarea {
   border-radius: 6px;
   border: 0px none #ffffff;
 }
+
+@media screen and (max-width: 1000px) {
+  body {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    height: 100vh;
+  }
+  #info {
+    padding-right: 0;
+  }
+  #info-wrapper {
+    z-index: 1;
+    flex: 1;
+  }
+  #display-wrapper {
+    height: 426px;
+    margin-bottom: -15px;
+  }
+  #info-wrapper,
+  #display-wrapper {
+    width: 100%;
+  }
+  #controls .control {
+    width: 55px;
+    height: 42px;
+    font-size: 20px;
+  }
+  .vs-info-text,
+  .vs-title,
+  .moves {
+    font-size: 16px !important;
+  }
+  .vs-speed-range-wrapper {
+    padding: 8px 14px;
+  }
+}
