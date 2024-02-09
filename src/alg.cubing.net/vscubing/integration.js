@@ -9,7 +9,9 @@ angular.element(document).ready(() => {
       document.querySelector("#algorithm").setSelectionRange(0, 0),
     );
 
-    // reconstruction: {scramble: string, solution: string}
+    /**
+     * @param {{scramble: string, solution: string}} reconstruction
+     */
     function importReconstruction(reconstruction) {
       const props = {
         puzzle: $scope.puzzle_map["3x3x3"],
