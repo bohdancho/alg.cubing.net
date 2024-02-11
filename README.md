@@ -1,6 +1,6 @@
 # VSCUBING
 
-This is a fork of the project, tweaked for embedding it on vscubing. Not used anymore, as we migrated to [cubing.js](https://github.com/cubing/cubing.js)
+This is a fork of the project, tweaked for embedding it on vscubing. Not used anymore, as we migrated to [cubing.js](https://github.com/cubing/cubing.js).
 
 # v2
 
