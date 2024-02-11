@@ -1,3 +1,7 @@
+# VSCUBING
+
+This is a fork of the project, tweaked for embedding it on vscubing. Not used anymore, as we migrated to [cubing.js](https://github.com/cubing/cubing.js)
+
 # v2
 
 alg.cubing.net development is currently frozen. "v2" will be part of [Twizzle](https://twizzle.net/), and is currently:
